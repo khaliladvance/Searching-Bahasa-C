@@ -1,36 +1,39 @@
 #include <stdio.h>
 
-int binarySearch(int array[], int CariAngka, int left, int right) {
-  if (right >= left) {
-    int mid = left + (right - left) / 2;
+int main(void)
+{
+  printf("##  Program Bahasa C Pencarian Array ## \n");
+  printf("======================================= \n\n");
 
-    // Jika menemukan angka tengah maka return mid
-    if (array[mid] == CariAngka)
-      return mid;
+  int input[100], arr_count, i, num;
 
-    // Cari angka pada bagian kiri
-    if (array[mid] > CariAngka)
-      return binarySearch(array, CariAngka, left, mid - 1);
+  printf("Input jumlah element Array: ");
+  scanf("%d",&arr_count);
 
-    // Cari angka pada bagian kanan
-    return binarySearch(array, CariAngka, mid + 1, right);
+  printf("Input %d angka (dipisah dengan enter): \n",arr_count);
+
+  // simpan setiap angka yang diinput ke dalam array
+  for(i = 0; i < arr_count; i++){
+    scanf("%d",&input[i]);
   }
 
-  return -1;
-}
+  printf("\n");
 
-int main() {
-  int array[] = {7, 11, 12, 23, 29, 32, 38};
-  int n = sizeof(array) / sizeof(array[0]);
-  int CariAngka = 32; //angka yang ingin dicari
-  int hasil = binarySearch(array, CariAngka, 0, n - 1);
+  printf("Input angka yang akan dicari: ");
+  scanf("%d",&num);
 
-  if (hasil == -1){
-    printf("Data tidak ditemukan\n");
-  }
-  else{
-    printf("Angka %d ditemukan pada index %d\n", CariAngka, hasil);
+  // proses pencarian array
+  for(i = 0; i < arr_count; i++){
+    if(input[i] == num){
+      printf("Angka ditemukan pada index ke-%d",i);
+      break;
+    }
   }
 
+  if(i == arr_count){
+    printf("Angka tidak ditemukan");
+  }
+
+  printf("\n");
   return 0;
 }
